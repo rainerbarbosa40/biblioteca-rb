@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="row">
+<h3 class='text-center text-muted mb-3'></h3>
+<p class="text-right"><a href="{{url_for('add_livro')}}" class="btn btn-danger">+Novo Cadastro</a></p>
+<table class="table table-bordered table-success">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Título</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Ano</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in datas %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{row.TITULO}}</td>
+        <td>{{row.AUTOR}}</td>
+        <td>{{row.ANO}}</td>
+
+        <td><a href="{{url_for('edit_livro',id=row.ID)}}" class="btn btn-primary">Editar</a></td>
+        <td><a href="{{url_for('delete_livro',id=row.ID)}}" class="btn btn-danger" onclick="return confirm ('Tem certeza que deseja apagar?')">Deletar</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

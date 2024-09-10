@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-5 mx-auto">
+        <h3>Pesquisar</h3><hr>
+        <form method="post" action="{{url_for('pesquisar_livro'))}}">
+            <div class="form group">
+                <label>Título</label>
+                <input type="text" name="titulo" required class="form-control" value="">
+            </div>
+           
+            <br>
+            <input type="submit" value="Confirmar" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+
+{% for row in datas %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{row.TITULO}}</td>
+        <td>{{row.AUTOR}}</td>
+        <td>{{row.ANO}}</td>
+      </tr>
+{% endfor %}
+
+
+{% endblock %}
+
